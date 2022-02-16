@@ -5,10 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener{
+
+    String[] states = { "State", "State 1", "State 2", "State 3", "State 4", };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,19 @@ public class MainActivity extends AppCompatActivity {
         EditText editTextAddress3 = findViewById(R.id.address3);
         EditText editTextPostocde = findViewById(R.id.postcode);
         EditText editTextCity = findViewById(R.id.city);
-        EditText editTextState = findViewById(R.id.state);
+
+
+        Spinner spinnerState = findViewById(R.id.state);
+        spinnerState.setOnItemSelectedListener(this);
+
+        //create instance of ArrayAdapter having list of courses
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, states);
+
+        //set simple layout resource file for each item of spinner
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // set ArrayAdapter data on the spinner which binds data to spinner
+        spinnerState.setAdapter(adapter);
+
 
         //initiate a check box
         CheckBox checkBoxCondition = findViewById(R.id.citizen);
@@ -40,11 +60,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void radioButtonHandler(View view){
-        //Action when click
+
+        //is button checked
+        boolean checked = ((RadioButton) view).isChecked();
+        String gender = "";
+
+        //which button is checked
+        switch (view.getId()){
+            case R.id.male:
+                if(checked){
+                    gender = "M";
+                    break;
+                }
+            case R.id.female:
+                if(checked){
+                    gender = "F";
+                    break;
+                }
+        }
+
+        Toast.makeText(getApplicationContext(), "Gender : "+gender, Toast.LENGTH_LONG).show();
     }
 
     public void submitbuttonHandler(View view){
         //Decide what happens when the user clicks the submit button
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
+        if(i > 0){
+            Toast.makeText(getApplicationContext(), states[i], Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
