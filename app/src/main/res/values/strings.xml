@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Android Form Sample APP</string>
+    <string name="title">Personal Info Form</string>
+    <string name="name">Fullname</string>
+    <string name="ic">IC</string>
+    <string name="address">Address</string>
+    <string name="address2">Address 2</string>
+    <string name="address3">Address 3</string>
+    <string name="postcode">63000</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="citizen">Citizen</string>
+    <string name="religion">Religion</string>
+    <string name="email">john@gmail.com</string>
+    <string name="phone">019</string>
+</resources>
