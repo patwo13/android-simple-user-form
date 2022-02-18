@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Form Sample APP</string>
+    <string name="app_name">Personal Info Form</string>
     <string name="title">Personal Info Form</string>
     <string name="name">Fullname</string>
     <string name="ic">IC</string>
